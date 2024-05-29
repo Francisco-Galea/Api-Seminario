@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@RequestMapping("/restobar")
+@RequestMapping("/clientes")
 @RestController
 public class UserController {
 
