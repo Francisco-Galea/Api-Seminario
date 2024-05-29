@@ -7,35 +7,35 @@ import com.example.demo.dto.response.UserResponseDTO;
 import java.util.List;
 
 
+
+@RequestMapping("/restobar")
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping
-
+    @PostMapping("/newClient")
     public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO) {
         return userService.createUser(userRequestDTO);
     }
 
-    @GetMapping
+    @GetMapping("/getClients")
     public List<UserResponseDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getClient/{id}")
     public UserResponseDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editClient/{id}")
     public UserResponseDTO updateUser(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) {
         return userService.updateUser(id, userRequestDTO);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteClient/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
