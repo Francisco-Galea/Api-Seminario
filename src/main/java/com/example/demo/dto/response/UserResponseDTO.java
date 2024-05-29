@@ -1,16 +1,11 @@
 package com.example.demo.dto.response;
+import lombok.Data;
 
-
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+@Data
 public class UserResponseDTO {
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
-
-
+    private Long dni;
 }

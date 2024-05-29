@@ -1,13 +1,11 @@
 package com.example.demo.controllers;
 import com.example.demo.dto.request.UserRequestDTO;
-import com.example.demo.models.UserModel;
-import com.example.demo.models.UserModel;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.example.demo.dto.response.UserResponseDTO;
+import java.util.List;
 
-import java.util.ArrayList;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -16,42 +14,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public ArrayList<UserModel> getUsers(){
-        return this.userService.getUsers();
-    }
-
     @PostMapping
-    public UserModel saveUser(@RequestBody UserRequestDTO user) {
-        UserModel userModel = new UserModel();
-        userModel.setFirstName(user.getFirstName());
-        userModel.setLastName(user.getLastName());
-        userModel.setEmail(user.getEmail());
-        return this.userService.saveUser(userModel);
+
+    public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO) {
+        return userService.createUser(userRequestDTO);
     }
 
-    @GetMapping(path = "/{id}")
-    public Optional<UserModel> getUserById(@PathVariable("id")Long id){
-        return  this.userService.getById(id);
+    @GetMapping
+    public List<UserResponseDTO> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-    @PutMapping(path = "/{id}")
-    public  UserModel updateUserById(@RequestBody UserRequestDTO request, @PathVariable("id") Long id){
-        UserModel userModel = new UserModel();
-        userModel.setFirstName(request.getFirstName());
-        userModel.setLastName(request.getLastName());
-        userModel.setEmail(request.getEmail());
-        return this.userService.updateById(userModel, id);
+    @GetMapping("/{id}")
+    public UserResponseDTO getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 
-    @DeleteMapping(path = "/{id}")
-    public  String deleteById(@PathVariable("id") Long id){
-        boolean ok = this.userService.deleteUser(id);
+    @PutMapping("/{id}")
+    public UserResponseDTO updateUser(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) {
+        return userService.updateUser(id, userRequestDTO);
+    }
 
-        if (ok){
-            return "User with id " + id + "deleted";
-        } else {
-            return "User with id " + id + "could not be deleted";
-        }
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 }
