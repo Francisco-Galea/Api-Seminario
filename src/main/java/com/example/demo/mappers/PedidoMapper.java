@@ -4,10 +4,12 @@ import com.example.demo.dto.request.PedidoRequestDTO;
 import com.example.demo.dto.response.PedidoResponseDTO;
 import com.example.demo.models.PedidoModel;
 import com.example.demo.models.ClientModel;
-import com.example.demo.models.ItemProductoModel;
+import com.example.demo.models.ItemPedidoModel;
 import com.example.demo.repositories.IClientRepository;
+import com.example.demo.repositories.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.stream.Collectors;
 
 @Component
@@ -17,7 +19,10 @@ public class PedidoMapper {
     private IClientRepository userRepository;
 
     @Autowired
-    private ItemProductoMapper itemProductoMapper;
+    private IProductoRepository productoRepository;
+
+    @Autowired
+    private ItemPedidoMapper itemPedidoMapper;
 
     public PedidoModel toModel(PedidoRequestDTO pedidoRequestDTO) {
         PedidoModel pedido = new PedidoModel();
@@ -25,9 +30,9 @@ public class PedidoMapper {
         pedido.setCliente(cliente);
         pedido.setFecha(pedidoRequestDTO.getFecha());
         pedido.setItems(pedidoRequestDTO.getItems().stream().map(itemDTO -> {
-            ItemProductoModel itemProducto = new ItemProductoModel();
-            itemProducto.setPedido(pedido);
-            return itemProducto;
+            ItemPedidoModel itemPedido = itemPedidoMapper.toModel(itemDTO);
+            itemPedido.setPedido(pedido);
+            return itemPedido;
         }).collect(Collectors.toList()));
         return pedido;
     }
@@ -38,7 +43,7 @@ public class PedidoMapper {
         pedidoResponseDTO.setClienteId(pedido.getCliente().getId());
         pedidoResponseDTO.setFecha(pedido.getFecha());
         pedidoResponseDTO.setItems(pedido.getItems().stream()
-                .map(itemProductoMapper::toDTO)
+                .map(itemPedidoMapper::toDTO)
                 .collect(Collectors.toList()));
         return pedidoResponseDTO;
     }

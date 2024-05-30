@@ -9,5 +9,5 @@ public class PedidoResponseDTO {
     private Long id;
     private Long clienteId;
     private Date fecha;
-    private List<ItemProductoResponseDTO> items;
+    private List<ItemPedidoResponseDTO> items;
 }

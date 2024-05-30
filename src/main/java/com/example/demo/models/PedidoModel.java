@@ -25,5 +25,5 @@ public class PedidoModel {
     private Date fecha;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<ItemProductoModel> items;
+    private List<ItemPedidoModel> items;
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public class PedidoRequestDTO {
     private Long clienteId;
     private Date fecha;
-    private List<ItemProductoRequestDTO> items;
+    private List<ItemPedidoRequestDTO> items;
 }

@@ -5,10 +5,11 @@ import com.example.demo.dto.response.PedidoResponseDTO;
 import com.example.demo.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-@RequestMapping("/pedidos")
 @RestController
+@RequestMapping("/pedidos")
 public class PedidoController {
 
     @Autowired
