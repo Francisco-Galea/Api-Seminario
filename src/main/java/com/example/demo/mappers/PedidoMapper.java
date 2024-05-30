@@ -3,9 +3,9 @@ package com.example.demo.mappers;
 import com.example.demo.dto.request.PedidoRequestDTO;
 import com.example.demo.dto.response.PedidoResponseDTO;
 import com.example.demo.models.PedidoModel;
-import com.example.demo.models.UserModel;
+import com.example.demo.models.ClientModel;
 import com.example.demo.models.ItemProductoModel;
-import com.example.demo.repositories.IUserRepository;
+import com.example.demo.repositories.IClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
@@ -14,19 +14,21 @@ import java.util.stream.Collectors;
 public class PedidoMapper {
 
     @Autowired
-    private IUserRepository userRepository;
+    private IClientRepository userRepository;
 
     @Autowired
     private ItemProductoMapper itemProductoMapper;
 
     public PedidoModel toModel(PedidoRequestDTO pedidoRequestDTO) {
         PedidoModel pedido = new PedidoModel();
-        UserModel cliente = userRepository.findById(pedidoRequestDTO.getClienteId()).orElse(null);
+        ClientModel cliente = userRepository.findById(pedidoRequestDTO.getClienteId()).orElse(null);
         pedido.setCliente(cliente);
         pedido.setFecha(pedidoRequestDTO.getFecha());
-        pedido.setItems(pedidoRequestDTO.getItems().stream()
-                .map(itemProductoMapper::toModel)
-                .collect(Collectors.toList()));
+        pedido.setItems(pedidoRequestDTO.getItems().stream().map(itemDTO -> {
+            ItemProductoModel itemProducto = new ItemProductoModel();
+            itemProducto.setPedido(pedido);
+            return itemProducto;
+        }).collect(Collectors.toList()));
         return pedido;
     }
 

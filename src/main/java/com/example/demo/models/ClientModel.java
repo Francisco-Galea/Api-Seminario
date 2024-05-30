@@ -1,4 +1,5 @@
 package com.example.demo.models;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name="clientes")
 
-public class UserModel {
+public class ClientModel {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id")

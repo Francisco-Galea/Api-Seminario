@@ -17,10 +17,10 @@ public class PedidoModel {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private UserModel cliente;
+    @JoinColumn(name = "cliente_id")
+    private ClientModel cliente;
 
-    @Column(name = "fecha", nullable = false)
+    @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
 

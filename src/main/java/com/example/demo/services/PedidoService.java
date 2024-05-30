@@ -7,7 +7,6 @@ import com.example.demo.models.PedidoModel;
 import com.example.demo.repositories.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,7 +42,6 @@ public class PedidoService {
         if (optionalPedido.isPresent()) {
             PedidoModel pedido = optionalPedido.get();
             pedido.setFecha(pedidoRequestDTO.getFecha());
-            // Aquí puedes actualizar la lista de items si es necesario.
             pedido = pedidoRepository.save(pedido);
             return pedidoMapper.toDTO(pedido);
         }
