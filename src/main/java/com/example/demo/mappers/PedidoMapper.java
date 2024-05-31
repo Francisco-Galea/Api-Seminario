@@ -24,11 +24,11 @@ public class PedidoMapper {
         ClientModel cliente = userRepository.findById(pedidoRequestDTO.getClienteId()).orElse(null);
         pedido.setCliente(cliente);
         pedido.setFecha(pedidoRequestDTO.getFecha());
-        pedido.setItems(pedidoRequestDTO.getItems().stream().map(itemDTO -> {
+        /*pedido.setItems(pedidoRequestDTO.getItems().stream().map(itemDTO -> {
             ItemProductoModel itemProducto = new ItemProductoModel();
             itemProducto.setPedido(pedido);
             return itemProducto;
-        }).collect(Collectors.toList()));
+        }).collect(Collectors.toList()));*/
         return pedido;
     }
 
@@ -37,9 +37,9 @@ public class PedidoMapper {
         pedidoResponseDTO.setId(pedido.getId());
         pedidoResponseDTO.setClienteId(pedido.getCliente().getId());
         pedidoResponseDTO.setFecha(pedido.getFecha());
-        pedidoResponseDTO.setItems(pedido.getItems().stream()
+        /*pedidoResponseDTO.setItems(pedido.getItems().stream()
                 .map(itemProductoMapper::toDTO)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList()));*/
         return pedidoResponseDTO;
     }
 }
