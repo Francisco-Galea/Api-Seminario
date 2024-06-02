@@ -1,9 +1,10 @@
 package com.example.demo.dto.response;
 
 import lombok.Data;
+
 @Data
-public class ItemProductoResponseDTO {
+public class ItemPedidoResponseDTO {
     private Long id;
     private Long productoId;
-    private Integer cantidad;
+    private int cantidad;
 }

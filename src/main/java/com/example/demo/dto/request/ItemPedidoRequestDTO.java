@@ -3,7 +3,7 @@ package com.example.demo.dto.request;
 import lombok.Data;
 
 @Data
-public class ItemProductoRequestDTO {
+public class ItemPedidoRequestDTO {
     private Long productoId;
-    private Integer cantidad;
+    private int cantidad;
 }
