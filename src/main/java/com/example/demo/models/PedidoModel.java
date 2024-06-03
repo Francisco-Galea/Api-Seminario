@@ -18,7 +18,7 @@ public class PedidoModel {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private ClientModel cliente;
+    private ClienteModel cliente;
 
     @OneToMany
     @JoinColumn(name = "pedido")

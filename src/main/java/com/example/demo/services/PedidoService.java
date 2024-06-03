@@ -6,7 +6,7 @@ import com.example.demo.mappers.PedidoMapper;
 import com.example.demo.models.ItemPedidoModel;
 import com.example.demo.models.PedidoModel;
 import com.example.demo.repositories.IPedidoRepository;
-import com.example.demo.repositories.IClientRepository;
+import com.example.demo.repositories.IClienteRepository;
 import com.example.demo.repositories.IItemPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class PedidoService {
     private PedidoMapper pedidoMapper;
 
     @Autowired
-    private IClientRepository clientRepository;
+    private IClienteRepository clientRepository;
 
     @Autowired
     private IItemPedidoRepository itemPedidoRepository;

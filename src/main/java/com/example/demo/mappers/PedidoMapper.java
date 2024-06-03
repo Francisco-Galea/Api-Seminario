@@ -3,9 +3,9 @@ package com.example.demo.mappers;
 import com.example.demo.dto.request.PedidoRequestDTO;
 import com.example.demo.dto.response.PedidoResponseDTO;
 import com.example.demo.models.PedidoModel;
-import com.example.demo.models.ClientModel;
+import com.example.demo.models.ClienteModel;
 import com.example.demo.models.ItemPedidoModel;
-import com.example.demo.repositories.IClientRepository;
+import com.example.demo.repositories.IClienteRepository;
 import com.example.demo.repositories.IItemPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,30 +17,30 @@ import java.util.stream.Collectors;
 public class PedidoMapper {
 
     @Autowired
-    private IClientRepository clientRepository;
+    private IClienteRepository clientRepository;
 
     @Autowired
     private IItemPedidoRepository itemPedidoRepository;
 
     public PedidoModel toModel(PedidoRequestDTO dto) {
-        PedidoModel pedido = new PedidoModel();
-        ClientModel client = clientRepository.findById(dto.getClienteId()).orElse(null);
+        PedidoModel pedidoModel = new PedidoModel();
+        ClienteModel client = clientRepository.findById(dto.getClienteId()).orElse(null);
         List<ItemPedidoModel> items = dto.getItemIds().stream()
                 .map(id -> itemPedidoRepository.findById(id).orElse(null))
                 .collect(Collectors.toList());
 
-        pedido.setCliente(client);
-        pedido.setItems(items);
-        pedido.setFechaPedido(dto.getFechaPedido());
-        return pedido;
+        pedidoModel.setCliente(client);
+        pedidoModel.setItems(items);
+        pedidoModel.setFechaPedido(dto.getFechaPedido());
+        return pedidoModel;
     }
 
     public PedidoResponseDTO toResponseDTO(PedidoModel model) {
-        PedidoResponseDTO dto = new PedidoResponseDTO();
-        dto.setId(model.getId());
-        dto.setCliente(model.getCliente());
-        dto.setItems(model.getItems());
-        dto.setFechaPedido(model.getFechaPedido());
-        return dto;
+        PedidoResponseDTO PedidoResponseDTO = new PedidoResponseDTO();
+        PedidoResponseDTO.setId(model.getId());
+        PedidoResponseDTO.setCliente(model.getCliente());
+        PedidoResponseDTO.setItems(model.getItems());
+        PedidoResponseDTO.setFechaPedido(model.getFechaPedido());
+        return PedidoResponseDTO;
     }
 }

@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class ProductoMapper {
 
     public ProductoModel toModel(ProductoRequestDTO productoRequestDTO) {
-        ProductoModel producto = new ProductoModel();
-        producto.setNombre(productoRequestDTO.getNombre());
-        producto.setDescripcion(productoRequestDTO.getDescripcion());
-        producto.setPrecio(productoRequestDTO.getPrecio());
-        return producto;
+        ProductoModel productoModel = new ProductoModel();
+        productoModel.setNombre(productoRequestDTO.getNombre());
+        productoModel.setDescripcion(productoRequestDTO.getDescripcion());
+        productoModel.setPrecio(productoRequestDTO.getPrecio());
+        return productoModel;
     }
 
     public ProductoResponseDTO toDTO(ProductoModel producto) {

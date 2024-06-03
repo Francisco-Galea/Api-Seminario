@@ -15,19 +15,19 @@ public class ItemPedidoMapper {
     private IProductoRepository productoRepository;
 
     public ItemPedidoModel toModel(ItemPedidoRequestDTO itemPedidoRequestDTO) {
-        ItemPedidoModel itemPedido = new ItemPedidoModel();
+        ItemPedidoModel itemPedidoModel = new ItemPedidoModel();
         ProductoModel producto = productoRepository.findById(itemPedidoRequestDTO.getProductoId()).orElse(null);
         if (producto != null) {
-            itemPedido.setProducto(producto);
-            itemPedido.setCantidad(itemPedidoRequestDTO.getCantidad());
+            itemPedidoModel.setProducto(producto);
+            itemPedidoModel.setCantidad(itemPedidoRequestDTO.getCantidad());
         }
-        return itemPedido;
+        return itemPedidoModel;
     }
 
     public ItemPedidoResponseDTO toDTO(ItemPedidoModel itemPedido) {
         ItemPedidoResponseDTO itemPedidoResponseDTO = new ItemPedidoResponseDTO();
         itemPedidoResponseDTO.setId(itemPedido.getId());
-        itemPedidoResponseDTO.setProductoId(itemPedido.getProducto().getId());
+        itemPedidoResponseDTO.setProducto(itemPedido.getProducto());
         itemPedidoResponseDTO.setCantidad(itemPedido.getCantidad());
         return itemPedidoResponseDTO;
     }

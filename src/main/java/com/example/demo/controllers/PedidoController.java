@@ -14,28 +14,27 @@ public class PedidoController {
 
     @Autowired
     private PedidoService pedidoService;
-
-    @PostMapping
+    @PostMapping("/createPedido")
     public PedidoResponseDTO createPedido(@RequestBody PedidoRequestDTO dto) {
         return pedidoService.createPedido(dto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getPedido/{id}")
     public PedidoResponseDTO getPedidoById(@PathVariable Long id) {
         return pedidoService.getPedidoById(id);
     }
 
-    @GetMapping
+    @GetMapping("/getPedidos")
     public List<PedidoResponseDTO> getAllPedidos() {
         return pedidoService.getAllPedidos();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updatePedidos/{id}")
     public PedidoResponseDTO updatePedido(@PathVariable Long id, @RequestBody PedidoRequestDTO dto) {
         return pedidoService.updatePedido(id, dto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletePedido/{id}")
     public void deletePedido(@PathVariable Long id) {
         pedidoService.deletePedido(id);
     }

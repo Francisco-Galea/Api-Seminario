@@ -9,7 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name="clientes")
 
-public class ClientModel {
+public class ClienteModel {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id")
