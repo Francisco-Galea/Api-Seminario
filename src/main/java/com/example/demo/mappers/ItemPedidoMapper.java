@@ -16,7 +16,6 @@ public class ItemPedidoMapper {
 
     public ItemPedidoModel toModel(ItemPedidoRequestDTO itemPedidoRequestDTO) {
         ItemPedidoModel itemPedido = new ItemPedidoModel();
-        System.out.println("Producto ID: " + itemPedidoRequestDTO.getProductoId()); // Agregamos un registro de depuración
         ProductoModel producto = productoRepository.findById(itemPedidoRequestDTO.getProductoId()).orElse(null);
         if (producto != null) {
             itemPedido.setProducto(producto);
