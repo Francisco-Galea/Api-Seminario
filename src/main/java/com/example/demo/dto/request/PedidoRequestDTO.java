@@ -1,13 +1,10 @@
 package com.example.demo.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class PedidoRequestDTO {
     private Long clienteId;
     private List<Long> itemIds;

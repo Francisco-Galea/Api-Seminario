@@ -28,7 +28,6 @@ public class PedidoMapper {
         List<ItemPedidoModel> items = dto.getItemIds().stream()
                 .map(id -> itemPedidoRepository.findById(id).orElse(null))
                 .collect(Collectors.toList());
-
         pedidoModel.setCliente(client);
         pedidoModel.setItems(items);
         pedidoModel.setFechaPedido(dto.getFechaPedido());

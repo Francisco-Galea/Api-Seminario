@@ -20,8 +20,6 @@ public class ItemPedidoController {
         return itemPedidoService.createItemPedido(itemPedidoRequestDTO);
     }
 
-
-
     @GetMapping("/getItemsPedido")
     public List<ItemPedidoResponseDTO> getAllItemsPedido() {
         return itemPedidoService.getAllItemsPedido();

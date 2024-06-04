@@ -66,6 +66,7 @@ public class PedidoService {
     }
 
     public void deletePedido(Long id) {
+
         pedidoRepository.deleteById(id);
     }
 }
