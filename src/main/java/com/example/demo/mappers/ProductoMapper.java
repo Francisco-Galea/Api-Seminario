@@ -4,8 +4,9 @@ import com.example.demo.dto.request.ProductoRequestDTO;
 import com.example.demo.dto.response.ProductoResponseDTO;
 import com.example.demo.models.ProductoModel;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ProductoMapper {
 
     public ProductoModel toModel(ProductoRequestDTO productoRequestDTO) {

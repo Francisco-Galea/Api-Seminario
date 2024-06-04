@@ -7,8 +7,9 @@ import com.example.demo.models.ProductoModel;
 import com.example.demo.repositories.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ItemPedidoMapper {
 
     @Autowired

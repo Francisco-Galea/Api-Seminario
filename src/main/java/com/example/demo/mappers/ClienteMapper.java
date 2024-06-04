@@ -4,8 +4,9 @@ import com.example.demo.dto.request.ClienteRequestDTO;
 import com.example.demo.dto.response.ClienteResponseDTO;
 import com.example.demo.models.ClienteModel;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ClienteMapper {
 
     public ClienteModel toModel(ClienteRequestDTO clienteRequestDTO) {

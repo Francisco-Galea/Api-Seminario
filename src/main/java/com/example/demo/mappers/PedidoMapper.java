@@ -9,11 +9,11 @@ import com.example.demo.repositories.IClienteRepository;
 import com.example.demo.repositories.IItemPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class PedidoMapper {
 
     @Autowired
