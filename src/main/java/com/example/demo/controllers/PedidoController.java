@@ -16,6 +16,7 @@ public class PedidoController {
     private PedidoService pedidoService;
     @PostMapping("/createPedido")
     public PedidoResponseDTO createPedido(@RequestBody PedidoRequestDTO dto) {
+
         return pedidoService.createPedido(dto);
     }
 
@@ -26,6 +27,7 @@ public class PedidoController {
 
     @GetMapping("/getPedidos")
     public List<PedidoResponseDTO> getAllPedidos() {
+
         return pedidoService.getAllPedidos();
     }
 
@@ -36,6 +38,7 @@ public class PedidoController {
 
     @DeleteMapping("/deletePedido/{id}")
     public void deletePedido(@PathVariable Long id) {
+
         pedidoService.deletePedido(id);
     }
 }

@@ -7,7 +7,6 @@ import com.example.demo.repositories.IClienteRepository;
 import com.example.demo.mappers.ClienteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,44 +15,44 @@ import java.util.stream.Collectors;
 public class ClienteService {
 
     @Autowired
-    private IClienteRepository userRepository;
+    private IClienteRepository clienteRepository;
 
     @Autowired
     private ClienteMapper clienteMapper;
 
-    public ClienteResponseDTO createUser(ClienteRequestDTO clienteRequestDTO) {
+    public ClienteResponseDTO createCliente(ClienteRequestDTO clienteRequestDTO) {
         ClienteModel clienteModel = clienteMapper.toModel(clienteRequestDTO);
-        clienteModel = userRepository.save(clienteModel);
+        clienteModel = clienteRepository.save(clienteModel);
         return clienteMapper.toDTO(clienteModel);
     }
 
-    public List<ClienteResponseDTO> getAllUsers() {
-        return userRepository.findAll().stream()
+    public List<ClienteResponseDTO> getAllCliente() {
+        return clienteRepository.findAll().stream()
                 .map(clienteMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public ClienteResponseDTO getUserById(Long id) {
-        Optional<ClienteModel> userModel = userRepository.findById(id);
+    public ClienteResponseDTO getClienteById(Long id) {
+        Optional<ClienteModel> userModel = clienteRepository.findById(id);
         return userModel.map(clienteMapper::toDTO).orElse(null);
     }
 
     public ClienteResponseDTO updateUser(Long id, ClienteRequestDTO clienteRequestDTO) {
-        Optional<ClienteModel> optionalUserModel = userRepository.findById(id);
+        Optional<ClienteModel> optionalUserModel = clienteRepository.findById(id);
         if (optionalUserModel.isPresent()) {
             ClienteModel clienteModel = optionalUserModel.get();
             clienteModel.setFirstName(clienteRequestDTO.getFirstName());
             clienteModel.setLastName(clienteRequestDTO.getLastName());
             clienteModel.setEmail(clienteRequestDTO.getEmail());
             clienteModel.setDni(clienteRequestDTO.getDni());
-            clienteModel = userRepository.save(clienteModel);
+            clienteModel = clienteRepository.save(clienteModel);
             return clienteMapper.toDTO(clienteModel);
         }
         return null;
     }
 
-    public void deleteUser(Long id) {
+    public void deleteCliente(Long id) {
 
-        userRepository.deleteById(id);
+        clienteRepository.deleteById(id);
     }
 }

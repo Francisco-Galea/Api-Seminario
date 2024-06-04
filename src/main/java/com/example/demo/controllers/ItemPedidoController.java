@@ -22,6 +22,7 @@ public class ItemPedidoController {
 
     @GetMapping("/getItemsPedido")
     public List<ItemPedidoResponseDTO> getAllItemsPedido() {
+
         return itemPedidoService.getAllItemsPedido();
     }
 
@@ -37,6 +38,7 @@ public class ItemPedidoController {
 
     @DeleteMapping("/deleteItemPedido/{id}")
     public void deleteItemPedido(@PathVariable Long id) {
+
         itemPedidoService.deleteItemPedido(id);
     }
 }

@@ -21,11 +21,13 @@ public class ProductoController {
 
     @GetMapping("/getProductos")
     public List<ProductoResponseDTO> getAllProductos() {
+
         return productoService.getAllProductos();
     }
 
     @GetMapping("/getProducto/{id}")
     public ProductoResponseDTO getProductoById(@PathVariable Long id) {
+
         return productoService.getProductoById(id);
     }
 
@@ -36,6 +38,7 @@ public class ProductoController {
 
     @DeleteMapping("/deleteProducto/{id}")
     public void deleteProducto(@PathVariable Long id) {
+        
         productoService.deleteProducto(id);
     }
 }

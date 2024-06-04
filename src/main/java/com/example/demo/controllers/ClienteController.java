@@ -15,18 +15,19 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping("/newCliente")
-    public ClienteResponseDTO createUser(@RequestBody ClienteRequestDTO clienteRequestDTO) {
-        return clienteService.createUser(clienteRequestDTO);
+    public ClienteResponseDTO createCliente(@RequestBody ClienteRequestDTO clienteRequestDTO) {
+        return clienteService.createCliente(clienteRequestDTO);
     }
 
     @GetMapping("/getClientes")
-    public List<ClienteResponseDTO> getAllUsers() {
-        return clienteService.getAllUsers();
+    public List<ClienteResponseDTO> getAllCliente() {
+
+        return clienteService.getAllCliente();
     }
 
     @GetMapping("/getCliente/{id}")
     public ClienteResponseDTO getUserById(@PathVariable Long id) {
-        return clienteService.getUserById(id);
+        return clienteService.getClienteById(id);
     }
 
     @PutMapping("/updateCliente/{id}")
@@ -36,6 +37,7 @@ public class ClienteController {
 
     @DeleteMapping("/deleteCliente/{id}")
     public void deleteUser(@PathVariable Long id) {
-        clienteService.deleteUser(id);
+
+        clienteService.deleteCliente(id);
     }
 }
